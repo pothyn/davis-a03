@@ -10,39 +10,66 @@
 
 package baseline;
 
+import java.util.HashMap;
+import java.util.Scanner;
+
 public class Solution24 {
+
+    private static final Scanner in = new Scanner(System.in);
 
     public static boolean isAnagram(String word1, String word2) {
 
-        // if word1 length == word2 length
+        // Check if words are not the same length
+        if (word1.length() != word2.length())
+            return false;
 
-        // Hashmap frequency1
-        // Hashmap frequency2
+        // Hashmaps for each string
+        HashMap<Character, Integer> frequency1 = new HashMap<>();
+        HashMap<Character, Integer> frequency2 = new HashMap<>();
 
-        // for word1 length
-        // char1 = word1 at index i
-        // char2 = word2 at index i
+        for (int i = 0; i < word1.length(); i++) {
+            char char1 = word1.charAt(i);
+            char char2 = word2.charAt(i);
 
-        // if char1 is in freq1 already
-            // add one to the value of char1 in frequency1
-        // else
-            // set char1 to a value of 1 in frequency1
+            if (frequency1.containsKey(char1)) {
+                frequency1.put(char1, frequency1.get(char1) + 1);
+            }
+            else {
+                frequency1.put(char1, 1);
+            }
 
-        // if char2 is in freq2 already
-            // add one to the value of char2 in frequency2
-        // else
-            // set char2 to a value of 1 in frequency2
+            if (frequency2.containsKey(char2)) {
+                frequency2.put(char2, frequency2.get(char2) + 1);
+            }
+            else {
+                frequency2.put(char2, 1);
+            }
+        }
 
-        // return (frequency1 == frequency2)
+        return frequency1.equals(frequency2);
 
     }
 
     public static void main(String[] args) {
 
-        String word1, word2;
+        // Initialization
+        String word1;
+        String word2;
+        boolean isAnagram;
 
-        // read input for word1 and word2
+        // Input
+        System.out.println("Enter two strings and I'll tell you if they are anagrams:");
+        System.out.print("Enter the first string: ");
+        word1 = in.next();
+        System.out.print("Enter the second string: ");
+        word2 = in.next();
 
-        // print isAnagram(word1, word2)
+        isAnagram = isAnagram(word1, word2);
+
+        // Result statements
+        if(isAnagram)
+            System.out.printf("\"%s\" and \"%s\" are anagrams.", word1, word2);
+        else
+            System.out.printf("\"%s\" and \"%s\" are not anagrams.", word1, word2);
     }
 }
