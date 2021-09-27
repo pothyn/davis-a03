@@ -12,45 +12,37 @@ package baseline;
 
 public class Solution24 {
 
+    public static boolean isAnagram(String word1, String word2) {
+
+        // if word1 length == word2 length
+
+        // Hashmap frequency1
+        // Hashmap frequency2
+
+        // for word1 length
+        // char1 = word1 at index i
+        // char2 = word2 at index i
+
+        // if char1 is in freq1 already
+            // add one to the value of char1 in frequency1
+        // else
+            // set char1 to a value of 1 in frequency1
+
+        // if char2 is in freq2 already
+            // add one to the value of char2 in frequency2
+        // else
+            // set char2 to a value of 1 in frequency2
+
+        // return (frequency1 == frequency2)
+
+    }
+
     public static void main(String[] args) {
 
         String word1, word2;
 
-        // Prompt user for two strings, asking if they are anagrams
-        // Prompt and read string 1
-        // Prompt and read string 2
+        // read input for word1 and word2
 
-        // If isAnagram(word1, word2)
-            // Print "word1 and word2 are anagrams"
-        // else
-            // Print "word1 and word2 are not anagrams"
-    }
-
-    private boolean isAnagram(String word1, String word2) {
-
-        char[] ch1, ch2;
-
-        // Get lengths of strings
-        // If string lengths not equal
-            // return false
-
-        ch1 = stringToChar(word1);
-        ch2 = stringToChar(word2);
-        // Sort ch1
-        // Sort ch2
-
-        // for each value of ch1
-            // if ch1[i] = ch2[i]
-                // return false
-
-        return true;
-    }
-
-    private char[] stringToChar(String word) {
-
-        char[] charArray = new char[word.length()];
-        // Add all characters to new array
-
-        return charArray;
+        // print isAnagram(word1, word2)
     }
 }
