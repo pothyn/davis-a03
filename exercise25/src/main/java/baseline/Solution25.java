@@ -5,6 +5,8 @@
 
 package baseline;
 
+import java.util.Scanner;
+
 public class Solution25 {
 
 //    Create a program that determines the complexity of a given password based on these rules:
@@ -25,46 +27,63 @@ public class Solution25 {
 //    Create a passwordValidator function that takes in the password as its argument and returns a numeric value you can evaluate to determine the password strength.
 //    Use a single output statement.
 
+    private static final Scanner in = new Scanner(System.in);
+
     public static void main(String[] args) {
 
-        String password, passwordStrength;
+        String password, passwordStrength = "";
         int passwordValue;
+        // Solution25 app = new Solution25();
 
-        // Take in input for password
+        password = in.next();
 
         passwordValue = passwordValidator(password);
 
         // Check the int value and modify passwordStrength
+        if(passwordValue == 0)
+            passwordStrength = "very weak";
+        else if(passwordValue == 1)
+            passwordStrength = "weak";
+        else if(passwordValue == 2)
+            passwordStrength = "strong";
+        else if(passwordValue == 3)
+            passwordStrength = "very strong";
 
         // Print out using printf
-
+        System.out.printf("The password '%s' is a %s password.", password, passwordStrength);
     }
 
-    private int passwordValidator(String password) {
+    public static int passwordValidator(String password) {
 
         int passwordValue;
         char ch;
         boolean containsNumbers = false, containsLetters = false, aboveEightCharacters, containsSpecial = false;
 
-        // set aboveEightCharacters whether it was above or below eight
+        aboveEightCharacters = (password.length() > 8);
 
-        // for 0 to password length
-            // set ch to the char at index[i] of password
+        for(int i = 0; i < password.length(); i++) {
+            ch = password.charAt(i);
             // if it is a number using character.isDigit(ch)
-                // set containsNumbers equal to true
+            if (Character.isDigit(ch))
+                containsNumbers = true;
             // if it is a letter using character.isLetter(ch)
-                // set containsLetters equal to true
+            else if (Character.isLetter(ch))
+                containsLetters = true;
             // if it is a special character (not digit AND not letter)
-                // set containsSpecial equal to true
+            else
+                containsSpecial = true;
+        }
 
-        // if (containsNumbers and not containsLetters and not aboveEightCharacters)
-            // return 0
-        // else if (containsLetters and not containsNumbers and not aboveEightCharacters)
-            // return 1
-        // else if (containsLetters and containsNumbers and aboveEightCharacters)
-            // return 2
-        // else if (containsLetters, containsNumbers, containsSpecial, aboveEightCharacters)
-            // return 3
+        System.out.printf("%b, %b, %b, %b%n", containsNumbers, containsLetters, aboveEightCharacters, containsSpecial);
+
+        if (containsNumbers && !containsLetters && !aboveEightCharacters)
+             return 0;
+        else if (containsLetters && !aboveEightCharacters)
+             return 1;
+         else if (containsLetters && containsNumbers && aboveEightCharacters)
+             return 2;
+         else if (containsLetters && containsNumbers && containsSpecial && aboveEightCharacters)
+             return 3;
 
         return -1;
 
