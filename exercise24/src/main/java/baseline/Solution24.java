@@ -1,6 +1,6 @@
 /*
  *  UCF COP3330 Fall 2021 Assignment 3 Solutions
- *  Copyright 2021 first_name last_name
+ *  Copyright 2021 Hunter Davis
  */
 
 //        Enter two strings and I'll tell you if they are anagrams:
@@ -17,7 +17,7 @@ public class Solution24 {
 
     private static final Scanner in = new Scanner(System.in);
 
-    public static boolean isAnagram(String word1, String word2) {
+    private boolean isAnagram(String word1, String word2) {
 
         // Check if words are not the same length
         if (word1.length() != word2.length())
@@ -56,6 +56,7 @@ public class Solution24 {
         String word1;
         String word2;
         boolean isAnagram;
+        Solution24 app = new Solution24();
 
         // Input
         System.out.println("Enter two strings and I'll tell you if they are anagrams:");
@@ -64,7 +65,7 @@ public class Solution24 {
         System.out.print("Enter the second string: ");
         word2 = in.next();
 
-        isAnagram = isAnagram(word1, word2);
+        isAnagram = app.isAnagram(word1, word2);
 
         // Result statements
         if(isAnagram)
