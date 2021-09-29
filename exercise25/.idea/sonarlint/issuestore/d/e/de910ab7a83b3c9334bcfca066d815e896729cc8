@@ -1,0 +1,14 @@
+
+D
+java:S1659"".Declare "passwordStrength" on a separate line.(×äÒá
+P	java:S125$"<This block of commented-out lines of code should be removed.(İ™ó
+S	java:S1065"9Replace this use of System.out or System.err by a logger.(Ä³—Õüÿÿÿÿ
+g
+java:S1659<"LDeclare "containsLetters" and all following declarations on a separate line.(úá´Üÿÿÿÿÿ
+G
+java:S1481:"2Remove this unused "passwordValue" local variable.(•Â§8
+S	java:S106M"9Replace this use of System.out or System.err by a logger.(»´éÂÿÿÿÿÿ
+S
+java:S2589U"8Remove this expression which always evaluates to "false"(ÿ§¥”üÿÿÿÿ
+S
+java:S2589S"7Remove this expression which always evaluates to "true"(Äˆ¸/8 ûçëÂ/
