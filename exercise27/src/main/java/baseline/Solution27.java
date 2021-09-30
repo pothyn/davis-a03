@@ -1,5 +1,8 @@
 package baseline;
 
+import java.util.Scanner;
+import java.lang.*;
+
 public class Solution27 {
 
 //    Write a program that prompts for a first name, last name, employee ID, and ZIP code.
@@ -33,73 +36,116 @@ public class Solution27 {
 //    Create a function for each validation rule. Then create a validateInput function that takes in all of the input data and invokes the specific validation functions.
 //    Use a single output statement to display the outputs.
 
+    private static final Scanner in = new Scanner(System.in);
+
     public static void main(String[] args) {
 
         String firstName, lastName, zip, employeeID;
 
         // Prompt and read firstName
+        System.out.print("Enter the first name: ");
+        firstName = in.nextLine();
+
         // Prompt and read lastName
+        System.out.print("Enter the last name: ");
+        lastName = in.nextLine();
+
         // Prompt and read zip
+        System.out.print("Enter the ZIP code: ");
+        zip = in.nextLine();
+
         // Prompt and read employeeID
+        System.out.print("Enter the employee ID: ");
+        employeeID = in.nextLine();
 
         // Create instance of Solution27 with given parameters
+        Solution27 app = new Solution27();
 
-        validateInput(firstName, lastName, zip, employeeID);
+        app.validateInput(firstName, lastName, zip, employeeID);
 
     }
 
     private void validateInput(String firstName, String lastName, String zip, String employeeID) {
 
-        String errorDisplay;
-
         // set errorDisplay to an empty string
+        String errorDisplay = "";
+        boolean anything = false;
 
-        // if isNameFilledIn(firstName)
-            // Add "The first name must be filled in.\n" to errorDisplay
-        // if isNameFilledIn(lastName)
-            // Add "The last name must be filled in.\n" to errorDisplay
-        // if isNameTwoLetters(firstName)
-            // Add "The first name must be at least 2 characters long.\n" to errorDisplay
-        // if isNameTwoLetters(lastName)
-            // Add "The last name must be at least 2 characters long.\n" to errorDisplay
-        // if checkEmployeeID(employeeID)
-            // Add "The employee ID must be in the format of AA-1234.\n" to errorDisplay
-        // if checkZip(zip)
-            // Add "The zipcode must be a 5 digit number.\n" to errorDisplay
-        // if (everything mentioned above is false)
-            // Add "There were no errors found.\n" to errorDisplay
+        if(isNameFilledIn(firstName)) {
+            errorDisplay += "The first name must be filled in.\n";
+            anything = true;
+        }
+        if(isNameFilledIn(lastName)) {
+            errorDisplay += "The last name must be filled in.\n";
+            anything = true;
+        }
+        if(isNameTwoLetters(firstName)) {
+            errorDisplay += "The first name must be at least 2 characters long.\n";
+            anything = true;
+        }
+        if(isNameTwoLetters(lastName)) {
+            errorDisplay += "The last name must be at least 2 characters long.\n";
+            anything = true;
+        }
+        if(checkEmployeeID(employeeID)) {
+            errorDisplay += "The employee ID must be in the format of AA-1234.\n";
+            anything = true;
+        }
+        if(checkZip(zip)) {
+            errorDisplay += "The zipcode must be a 5 digit number.\n";
+            anything = true;
+        }
+        if(anything == false)
+            errorDisplay += "There were no errors found.\n";
 
-        // print errorDisplay
+        System.out.print(errorDisplay);
     }
 
     private boolean isNameTwoLetters(String name) {
-        // Check if 2 letters or less
-            // return false
-        // return true
+        // Return false if 2 letters or less
+        if(name.length()>2)
+            return false;
+        return true;
     }
 
     private boolean isNameFilledIn(String name) {
-        // Check if name is 0 characters
-            // return false
-        // return true
+        // Return false if name is 0 characters
+        if(name.length()>0)
+            return false;
+        return true;
     }
 
     private boolean checkZip(String zip) {
+        // Check if zip is five characters long
+        if(zip.length() != 5)
+            return true;
+
         // Check if zip can be parsed all the way through (using try/catch)
-            // return true
-        // return false
+        for(int i = 0; i < zip.length(); i++)
+            if(!Character.isDigit(zip.charAt(i)))
+                return true;
+        return false;
     }
 
     private boolean checkEmployeeID(String employeeID) {
-        // Check if string is 8 characters long
-            // return false
+        // Check if string is NOT 8 characters long
+        if(employeeID.length() != 7)
+            return true;
+
         // Check if firstTwo characters of string are NOT letters (.isLetter())
-            // return false
+        if(!Character.isLetter(employeeID.charAt(0)) || !Character.isLetter(employeeID.charAt(1)))
+            return true;
+
         // Check if third character is NOT a dash
-            // return false
-        // Check if chars 4-8 are NOT numbers (Character.isDigit())
-            // return false
-        // return true
+        if(employeeID.charAt(2) != ('-'))
+            return true;
+
+        // Check if chars 4-7 are NOT numbers (Character.isDigit())
+        for(int i = 3; i < 7; i++)
+            if(!Character.isDigit(employeeID.charAt(i)))
+                return true;
+
+        return false;
     }
 
 
