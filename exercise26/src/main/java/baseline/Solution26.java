@@ -5,7 +5,11 @@
 
 package baseline;
 
+import java.util.Scanner;
+
 public class Solution26 {
+
+    private static final Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
 
@@ -37,18 +41,29 @@ public class Solution26 {
 //             which takes no parameters and returns the number of months.
 //        Round fractions of a cent up to the next cent for internal calculations
 
-        int balance, numberOfMonths, monthlyPayment;
+        int balance;
+        int numberOfMonths;
+        int monthlyPayment;
         double apr;
 
         // Prompt and Take in balance
-        // Prompt and take in monthlyPayment
+        System.out.print("What is your balance? ");
+        balance = in.nextInt();
+
         // Prompt and take in apr
+        System.out.print("What is the APR on the card (as a percent)? ");
+        apr = in.nextDouble();
 
-        // Make PaymentCalculator instance using constructor
+        // Prompt and take in monthlyPayment
+        System.out.print("What is the monthly payment you can make? ");
+        monthlyPayment = in.nextInt();
 
-        // set numberOfMonths equal to the PaymentCalculator instance's calculateMonthsUntilPaidOff() method
+        // Initialize new Payment Calculator with entered variables
+        PaymentCalculator app = new PaymentCalculator(balance, apr, monthlyPayment);
 
-        // Print numberOfMonths
+        numberOfMonths = app.calculateMonthsUntilPaidOff();
+
+        System.out.printf("%d", numberOfMonths);
 
     }
 

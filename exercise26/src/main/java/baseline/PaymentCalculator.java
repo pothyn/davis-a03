@@ -12,22 +12,30 @@ public class PaymentCalculator {
     private double dailyRate;
 
     public PaymentCalculator(int balance, double apr, int monthlyPayment) {
-        // Set the class' balance equal to balance
-        // Set the dailyRate = apr/365
-        // Set the class' monthlyPayment equal to monthlyPayment
+
+        this.balance = balance;
+        dailyRate = apr/365;
+        this.monthlyPayment = monthlyPayment;
+
     }
 
     public int calculateMonthsUntilPaidOff() {
 
-        // Initialize months as a double
+        double months;
+
         // Set months equal to the given equation
+//        n = -(1/30) * log(1 + b/p * (1 - (1 + i)^30)) / log(1 + i)
+        months = (-1/30.0f);
+        months *= Math.log(1 + (double)balance/monthlyPayment);
+        months *= (1 - Math.pow((1+dailyRate),30));
+        months /= Math.log(1+dailyRate);
 
         // Round to nearest cent
-        // multiply months by 100
-        // Use math.ceil()
-        // divide months by 100
+        months *= 100.0;
+        months = Math.ceil(months);
+        months /= 100.0;
 
-        // return months
+        return (int)months;
 
     }
 }
