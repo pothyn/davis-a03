@@ -16,7 +16,7 @@ class Solution30Test {
 
     @Test
     void testSpacingWithValue1() {
-        assertEquals("   1", app.spacing(1));
+        assertEquals("    1", app.spacing(1));
     }
 
     @Test
@@ -26,7 +26,7 @@ class Solution30Test {
 
     @Test
     void countDigits() {
-        assertEquals(2,app.getDigitCount(20);
+        assertEquals(2,app.getDigitCount(20));
     }
 
 }
