@@ -25,10 +25,14 @@ public class PaymentCalculator {
 
         // Set months equal to the given equation
 //        n = -(1/30) * log(1 + b/p * (1 - (1 + i)^30)) / log(1 + i)
-        months = (-1/30.0f);
-        months *= Math.log(1 + (double)balance/monthlyPayment);
-        months *= (1 - Math.pow((1+dailyRate),30));
-        months /= Math.log(1+dailyRate);
+        months = (-1/30.0f) *
+                Math.log10(1 + (double)balance/monthlyPayment * (1.0 - Math.pow((1.0+dailyRate),30))
+                        / Math.log10(1.0+dailyRate));
+//
+//        months = (-1/30.0f);
+//        months *= Math.log(1 + (double)balance/monthlyPayment);
+//        months *= (1 - Math.pow((1+dailyRate),30));
+//        months /= Math.log(1+dailyRate);
 
         // Round to nearest cent
         months *= 100.0;
@@ -37,5 +41,17 @@ public class PaymentCalculator {
 
         return (int)months;
 
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public double getDailyRate() {
+        return dailyRate;
+    }
+
+    public int getMonthlyPayment() {
+        return monthlyPayment;
     }
 }

@@ -31,9 +31,9 @@ public class Solution25 {
 
     public static void main(String[] args) {
 
-        String password, passwordStrength = "";
+        String password;
+        String passwordStrength = "";
         int passwordValue;
-        // Solution25 app = new Solution25();
 
         password = in.next();
 
@@ -55,9 +55,11 @@ public class Solution25 {
 
     public static int passwordValidator(String password) {
 
-        int passwordValue;
         char ch;
-        boolean containsNumbers = false, containsLetters = false, aboveEightCharacters, containsSpecial = false;
+        boolean containsNumbers = false;
+        boolean containsLetters = false;
+        boolean aboveEightCharacters;
+        boolean containsSpecial = false;
 
         aboveEightCharacters = (password.length() > 8);
 
@@ -74,15 +76,13 @@ public class Solution25 {
                 containsSpecial = true;
         }
 
-        System.out.printf("%b, %b, %b, %b%n", containsNumbers, containsLetters, aboveEightCharacters, containsSpecial);
-
         if (containsNumbers && !containsLetters && !aboveEightCharacters)
              return 0;
         else if (containsLetters && !aboveEightCharacters)
              return 1;
-         else if (containsLetters && containsNumbers && aboveEightCharacters)
+         else if (containsLetters && containsNumbers && !containsSpecial)
              return 2;
-         else if (containsLetters && containsNumbers && containsSpecial && aboveEightCharacters)
+         else if (containsLetters)
              return 3;
 
         return -1;
