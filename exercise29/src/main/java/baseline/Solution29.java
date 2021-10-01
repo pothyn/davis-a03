@@ -1,5 +1,7 @@
 package baseline;
 
+import java.util.Scanner;
+
 public class Solution29 {
 
 //    Write a quick calculator that prompts for the rate of return on an investment and calculates how many years it will take to double your investment.
@@ -21,9 +23,13 @@ public class Solution29 {
 //    Don’t allow non-numeric values.
 //    Use a loop to trap bad input, so you can ensure that the user enters valid values.
 
+    private static final Scanner in = new Scanner(System.in);
+
     public static void main(String[] args) {
 
-        // print(readInput())
+        Solution29 app = new Solution29();
+
+        System.out.printf("It will take you %d years to double your initial investment.", app.readInput());
 
     }
 
@@ -31,19 +37,33 @@ public class Solution29 {
         String input;
         int rateOfReturn;
         int years;
+        boolean numeric = true;
 
-        // do while(true)
+        do {
             // Prompt and read input, store in input
+            input = in.nextLine();
             // if input isnt fully numeric
-                // continue (aka go back through loop)
-            // else if input = 0
-                // prompt that you cant enter 0. continue and go back through loop
-            // else
-                // scannedInput = parsed string
-                // years = 72 / rateOfReturn
-                // break
+            for(int i = 0; i < input.length(); i++) {
+                if(!Character.isDigit(input.charAt(i)))
+                    numeric = false;
+            }
 
-        // return years
+            if(!numeric) {
+                // continue (aka go back through loop)
+                System.out.println("Sorry. That's not a valid input.");
+                numeric = true;
+            }
+            // else if input = 0
+            else if(Integer.parseInt(input) == 0)
+                // prompt that you cant enter 0. continue and go back through loop
+                System.out.println("You can't enter 0.");
+            // else
+            else {
+                rateOfReturn = Integer.parseInt(input);
+                years = 72 / rateOfReturn;
+                return years;
+            }
+            } while(true);
 
     }
 }
