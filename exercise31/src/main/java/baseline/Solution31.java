@@ -1,12 +1,18 @@
 package baseline;
 
+import java.util.Scanner;
+
 public class Solution31 {
+
+    private static final Scanner in = new Scanner(System.in);
 
     private int restingHeartRate;
     private int age;
 
     public Solution31(int restingHeartRate, int age) {
         // initialize vars to the private ints
+        this.restingHeartRate = restingHeartRate;
+        this.age = age;
     }
 
 //    When getting into a fitness program, you may want to figure out your target heart rate so you don’t overexert yourself.
@@ -35,27 +41,58 @@ public class Solution31 {
 
     public static void main(String[] args) {
 
-        // print getTabularFormat();
+        System.out.print("Enter the resting heart rate: ");
+        int restingHeartRate = readInt();
+        System.out.print("Enter the age: ");
+        int age = readInt();
 
+        Solution31 app = new Solution31(restingHeartRate, age);
+
+        System.out.println(app.getTabularFormat());
+
+    }
+
+    private static int readInt() {
+        String input;
+        boolean exit;
+
+        // Ensures that nothing is a letter/special character
+        do {
+            exit = true;
+            input = in.next();
+            for(int i = 0; i < input.length(); i++)
+                if(!Character.isDigit(input.charAt(i))) {
+                    exit = false;
+                    System.out.println("Incorrect value given, try again.");
+                }
+        } while(!exit);
+
+        return Integer.parseInt(input);
     }
 
     public String getTabularFormat() {
-        String tabFormat;
+        String tabFormat = "";
 
         // add Resting pulse and age header using the private values from this file
-        // add intensity vs rate header
-        // for loop from 55 to 95 with increments of 5 (index i)
-            // each will call and print getHeartRate(i)
+        tabFormat += "Resting Pulse: " + restingHeartRate + "\t\tAge: " + age + "\n";
 
+        // add intensity vs rate header
+        tabFormat += "Intensity\t| Rate\n";
+        tabFormat += "----------------------\n";
+        // for loop from 55 to 95 with increments of 5 (index i)
+        for(int i = 55; i < 100; i += 5) {
+            // each will call and print getHeartRate(i)
+            tabFormat += i + "%\t\t\t|  " + getTargetHeartRate(i) + " bpm\n";
+        }
         // return tabFormat
+        return tabFormat;
     }
 
-    public int getTargetHeartRate(int intensity) {
+    public int getTargetHeartRate(double intensity) {
         int heartRate;
 
-        // heartRate = (((220 − age) − restingHR) * intensity) + restingHR
+        heartRate = (int)(((220 - age) - restingHeartRate) * intensity/100) + restingHeartRate;
 
-        // return heartRate
-
+        return heartRate;
     }
 }
