@@ -17,7 +17,7 @@ public class Solution24 {
 
     private static final Scanner in = new Scanner(System.in);
 
-    private boolean isAnagram(String word1, String word2) {
+    public boolean isAnagram(String word1, String word2) {
 
         // Check if words are not the same length
         if (word1.length() != word2.length())
