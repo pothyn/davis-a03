@@ -17,12 +17,7 @@ class Solution28Test {
     @Test
     void testAddValues() {
         int[] array = {1,2,3,4,5};
-        app.addValues(array);
-    }
-
-    @Test
-    void testTakeNumberOfValues() {
-        app.takeNumberOfValues();
+        assertEquals(15,app.addValues(array));
     }
 
 }
