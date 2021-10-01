@@ -1,7 +1,6 @@
 package baseline;
 
 import java.util.Scanner;
-import java.lang.*;
 
 public class Solution27 {
 
@@ -40,7 +39,10 @@ public class Solution27 {
 
     public static void main(String[] args) {
 
-        String firstName, lastName, zip, employeeID;
+        String firstName;
+        String lastName;
+        String zip;
+        String employeeID;
 
         // Prompt and read firstName
         System.out.print("Enter the first name: ");
@@ -65,25 +67,25 @@ public class Solution27 {
 
     }
 
-    private void validateInput(String firstName, String lastName, String zip, String employeeID) {
+    public void validateInput(String firstName, String lastName, String zip, String employeeID) {
 
         // set errorDisplay to an empty string
         String errorDisplay = "";
         boolean anything = false;
 
-        if(isNameFilledIn(firstName)) {
+        if(!checkNameFilledIn(firstName)) {
             errorDisplay += "The first name must be filled in.\n";
             anything = true;
         }
-        if(isNameFilledIn(lastName)) {
+        if(!checkNameFilledIn(lastName)) {
             errorDisplay += "The last name must be filled in.\n";
             anything = true;
         }
-        if(isNameTwoLetters(firstName)) {
+        if(!checkNameTwoLetters(firstName)) {
             errorDisplay += "The first name must be at least 2 characters long.\n";
             anything = true;
         }
-        if(isNameTwoLetters(lastName)) {
+        if(!checkNameTwoLetters(lastName)) {
             errorDisplay += "The last name must be at least 2 characters long.\n";
             anything = true;
         }
@@ -95,27 +97,23 @@ public class Solution27 {
             errorDisplay += "The zipcode must be a 5 digit number.\n";
             anything = true;
         }
-        if(anything == false)
+        if(!anything)
             errorDisplay += "There were no errors found.\n";
 
         System.out.print(errorDisplay);
     }
 
-    private boolean isNameTwoLetters(String name) {
+    public boolean checkNameTwoLetters(String name) {
         // Return false if 2 letters or less
-        if(name.length()>2)
-            return false;
-        return true;
+        return (name.length()>2);
     }
 
-    private boolean isNameFilledIn(String name) {
+    public boolean checkNameFilledIn(String name) {
         // Return false if name is 0 characters
-        if(name.length()>0)
-            return false;
-        return true;
+        return (name.length()!=0);
     }
 
-    private boolean checkZip(String zip) {
+    public boolean checkZip(String zip) {
         // Check if zip is five characters long
         if(zip.length() != 5)
             return true;
@@ -127,7 +125,7 @@ public class Solution27 {
         return false;
     }
 
-    private boolean checkEmployeeID(String employeeID) {
+    public boolean checkEmployeeID(String employeeID) {
         // Check if string is NOT 8 characters long
         if(employeeID.length() != 7)
             return true;

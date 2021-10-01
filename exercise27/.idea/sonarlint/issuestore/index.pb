@@ -7,7 +7,3 @@ X
 gradlew,5\b\5bbfa66edb4db3c7c33c5181f43510990d3307f9
 ?
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-V
-&src/main/java/baseline/Solution27.java,c\4\c4ea424aa0247fa241423fcc7495bda62cff644e
