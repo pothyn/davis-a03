@@ -17,23 +17,29 @@
 
 package baseline;
 
+import java.util.Scanner;
+
 public class Solution33 {
+
+    private static final Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        // Prompt for question
-        // Take input but don't store
+        Solution33 app = new Solution33();
 
-        // print randomResponseGenerator()
+        // Prompt for question
+        System.out.print("What's your question?\n> ");
+        // Take input but don't store
+        in.nextLine();
+
+        System.out.println(app.randomResponseGenerator());
 
     }
 
     public String randomResponseGenerator() {
-        // array of strings initialization
+        String[] responseList = {"Yes", "No", "Maybe", "Ask again later"};
 
-        // generate random number
-
-        // return array of strings [index: random number]
+        return responseList[(int)Math.floor(Math.random()*(3 + 1) + 0)];
 
     }
 
