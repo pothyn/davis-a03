@@ -36,18 +36,12 @@ class Solution36Test {
 
     @Test
     void testStd() {
-        assertEquals(353.55, app.getStd());
+        assertEquals(353.55, app.getStd(), .01);
     }
 
     @Test
     void testAvg() {
         assertEquals(400.0, app.getAvg());
-    }
-
-    @Test
-    void testAddNumber() {
-        app.addNumber("300");
-        assertEquals("100, 200, 1000, 300, 300", app.getListNumbers());
     }
 
 }

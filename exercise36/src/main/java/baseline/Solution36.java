@@ -4,8 +4,8 @@
  */
 
 //        Write a program that prompts for response times from a website in milliseconds.
-//        It should keep asking for values until the user enters “done.”
-//
+//        It should keep asking for values until the user enters “done
+
 //        The program should print the average time (mean), the minimum time, the maximum time,
 //        and the population standard deviation.
 //
@@ -30,60 +30,111 @@
 
 package baseline;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Solution36 {
 
+    private static final Scanner in = new Scanner(System.in);
+    private ArrayList<Integer> numbers = new ArrayList<>();
+
     public static void main(String[] args) {
-        // while (addNumber(in.nextLine());
 
-        // print getListNumbers()
+        Solution36 app = new Solution36();
 
-        // print getAvg()
-        // print getMin()
-        // print getMax()
-        // print getStd()
+        System.out.print("Enter a number: ");
+
+        while(app.addNumber(in.nextLine()))
+            System.out.print("Enter a number: ");
+
+        System.out.printf("%nNumbers: %s%n", app.getListNumbers());
+
+        System.out.printf("The average is %.1f%n", app.getAvg());
+        System.out.printf("The minimum is %d%n", app.getMin());
+        System.out.printf("The maximum is %d%n", app.getMax());
+        System.out.printf("The standard deviation is %.2f%n", app.getStd());
 
     }
 
     public String getListNumbers() {
+
+        String total = "";
+
         // Use a for loop to add all the values to a single string and return it
+        for(int i = 0; i < numbers.size(); i++) {
+            total += numbers.get(i);
+            if(i != numbers.size() - 1)
+                total +=  ", ";
+        }
+        return total;
     }
 
 
     public boolean addNumber(String value) {
-        // check if value is equal to "done"
-            // return false
-        // check if it is only digits via isAllDigits(value)
-            // add to arrayList
-
+        if(value.equals("done"))
+            return false;
+        if(isAllDigits(value))
+            numbers.add(Integer.parseInt(value));
+        return true;
     }
 
     private boolean isAllDigits(String value) {
         // return false if any of the values are NOT digits
         // otherwise return true
+
+        for(int i = 0; i < numbers.size(); i++)
+            if(!Character.isDigit(value.charAt(i)))
+                return false;
+        return true;
     }
 
 
     public int getMax() {
         // run through all the values
         // return highest
+        int max = numbers.get(0);
+
+        for(int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) > max)
+                max = numbers.get(i);
+        }
+        return max;
     }
 
     public int getMin() {
         // run through all the values
         // return lowest
+
+        int min = numbers.get(0);
+
+        for(int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) < min)
+                min = numbers.get(i);
+        }
+        return min;
     }
 
     public double getAvg() {
+        double average = 0;
+
         // add up all values
-        // divide by size of arraylist
-        // return that value
+        for(int i = 0; i < numbers.size(); i++)
+            average += numbers.get(i);
+
+        // divide by size of arraylist and return that value
+        return average/numbers.size();
+
     }
 
     public double getStd() {
-        // call getAvg()
 
-        // for each value in the array list add onto standardDevitation the (number - mean) ^ 2
+        double average = getAvg();
+        double standardDeviation = 0;
 
-        // return sqrt(standardDeviation / arrayList size)
+        for(int i = 0; i < numbers.size(); i++) {
+            standardDeviation += Math.pow(numbers.get(i) - average, 2);
+        }
+
+        return Math.sqrt(standardDeviation / numbers.size());
     }
 }
