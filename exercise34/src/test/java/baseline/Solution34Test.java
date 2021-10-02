@@ -18,7 +18,7 @@ class Solution34Test {
     @Test
     void testAdd() {
         app.addEmployee("Jackie Jackson");
-        assertEquals("John Smith\nJackie Jackson", app.listEmployees());
+        assertEquals("John Smith\nJackie Jackson\n", app.listEmployees());
     }
 
     @BeforeEach

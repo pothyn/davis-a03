@@ -30,37 +30,57 @@
 package baseline;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Solution34 {
 
-    private ArrayList<String> employeeList = new ArrayList<String>();
+    private ArrayList<String> employeeList = new ArrayList<>();
+    private static final Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
 
+        Solution34 app = new Solution34();
+        String userInput;
+
         // call addEmployee for the 5 employee names
+        app.addEmployee("John Smith");
+        app.addEmployee("Jackie Jackson");
+        app.addEmployee("Chris Jones");
+        app.addEmployee("Amanda Cullen");
+        app.addEmployee("Jeremy Goodwin");
+
+        // print listEmployees()
+        System.out.println(app.listEmployees());
 
         // Ask to remove one
+        System.out.print("Enter an employee name to remove: ");
+        userInput = in.nextLine();
 
-        // removeEmployee()
+        // Remove employee
+        app.removeEmployee(userInput);
 
-        // print(listEmployees())
+        // List employees
+        System.out.println(app.listEmployees());
     }
 
     public void addEmployee(String name) {
         // add string to ArrayList
+        employeeList.add(name);
     }
 
     public void removeEmployee(String name) {
         // remove string from ArrayList
+        employeeList.remove(name);
     }
 
     public String listEmployees() {
-        String list = "";
+        String list = "\nThere are " + employeeList.size() + " employees:\n";
 
-        // for (0 to array list length)
+        for(int i = 0; i < employeeList.size(); i++)
             // add the string at index i of array list and a new line
+            list += employeeList.get(i) + "\n";
 
-        // return list
+        return list;
     }
 
 }
