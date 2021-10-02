@@ -9,10 +9,6 @@ class Solution32Test {
 
     Solution32 app;
 
-    @Test
-    void testValueChecker() {
-        assertEquals(false, app.valueChecker("a"));
-    }
 
     @Test
     void testGenerateRandom() {
@@ -35,8 +31,8 @@ class Solution32Test {
     }
 
     @Test
-    void testYNCheckerY() {
-        assertEquals(true, app.ynChecker("y"));
+    void testYNCheckerN() {
+        assertEquals(1, app.ynChecker("n"));
     }
 
     @BeforeEach
