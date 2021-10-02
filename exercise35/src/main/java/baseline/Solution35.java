@@ -23,28 +23,39 @@
 
 package baseline;
 
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+
 public class Solution35 {
+
+    private ArrayList<String> contestants = new ArrayList<>();
+    private static final Scanner in = new Scanner(System.in);
+    private static final Random rand = new Random();
 
     public static void main(String[] args) {
 
-        // while( addPerson(in.nextLine()) is true)
+        Solution35 app = new Solution35();
 
-        // chooseWinner()
+        while(app.addPerson(in.nextLine()));
+
+        System.out.println(app.chooseWinner());
 
     }
 
 
     public boolean addPerson(String name) {
-        // if name is blank
-            // return false
-
+        if(name.isBlank())
+            return false;
         // add person to array list
-        // return true
+        contestants.add(name);
+        return true;
 
     }
 
     public String chooseWinner() {
         // generate random number between 0 and array list size
         // return array list value for that index
+        return contestants.get(rand.nextInt(contestants.size()));
     }
 }
