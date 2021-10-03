@@ -13,14 +13,14 @@ class Solution38Test {
     void testFilterEvenNumbers() {
         int[] array = {1, 2, 3, 4, 5, 6, 7, 8};
         int[] evenArray = {2,4,6,8};
-        assertEquals(evenArray, app.filterEvenNumbers(array));
+        assertArrayEquals(evenArray, app.filterEvenNumbers(array));
     }
 
     @Test
     void testConvertToInts() {
         String strArray = "1 2 3 4 5 6 7 8";
         int[] array = {1, 2, 3, 4, 5, 6, 7, 8};
-        assertEquals(array, app.convertToInts(strArray));
+        assertArrayEquals(array, app.convertToInts(strArray));
     }
 
     @BeforeEach
